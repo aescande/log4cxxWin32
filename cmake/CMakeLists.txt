@@ -1,11 +1,14 @@
 cmake_minimum_required(VERSION 2.8.12)
 
-set(PROJECT_NAME log4cxx)
+INCLUDE(cmake/base.cmake)
+
+set(PROJECT_NAME liblog4cxx)
 set(PROJECT_DESCRIPTION "log4cxx library")
 set(PROJECT_URL "")
 set(PROJECT_VERSION 0.10.0)    # [TODO] retrieve this number automatically from lo4cxx/pom.xml
+SET(PROJECT_DEBUG_POSTFIX "_d")
 
-project(${PROJECT_NAME})
+SETUP_PROJECT()
 
 # Get the parent directory
 get_filename_component(BASE_DIR ${CMAKE_SOURCE_DIR} DIRECTORY)
@@ -707,9 +710,10 @@ set(LOG4CXX_SRC
   ${LOG4CXX_DIR}/cpp/zipcompressaction.cpp
   )
 
-add_library(log4cxx SHARED ${LOG4CXX_SRC} ${LOG4CXX_HEADERS})
-target_include_directories(log4cxx PUBLIC ${LOG4CXX_INCLUDE_DIRECTORIES})
-target_compile_options(log4cxx PUBLIC 
+set(LOG4CXX_LIBRARY_NAME log4cxx)
+add_library(${LOG4CXX_LIBRARY_NAME} SHARED ${LOG4CXX_SRC} ${LOG4CXX_HEADERS})
+target_include_directories(${LOG4CXX_LIBRARY_NAME} PUBLIC ${LOG4CXX_INCLUDE_DIRECTORIES})
+target_compile_options(${LOG4CXX_LIBRARY_NAME} PUBLIC 
                        "-D_USRDLL"
                        "-DDLL_EXPORTS"
                        "-DLOG4CXX"
@@ -718,7 +722,7 @@ target_compile_options(log4cxx PUBLIC
 # This dependencies are automatically added in a handmade VS solution but they
 # are forgotten by cmake (at least for 3.2.3 version)
 set(MISSING_AUTOMATIC_DEPEDENCIES odbc32 odbccp32)
-target_link_libraries(log4cxx 
+target_link_libraries(${LOG4CXX_LIBRARY_NAME} 
   apr
   aprutil
   xml
@@ -727,14 +731,17 @@ target_link_libraries(log4cxx
   Mswsock
   ${MISSING_AUTOMATIC_DEPEDENCIES}
   )
-add_dependencies(log4cxx aprutil apr)
-set_target_properties(log4cxx PROPERTIES VERSION ${PROJECT_VERSION})
-install(TARGETS log4cxx
+add_dependencies(${LOG4CXX_LIBRARY_NAME} aprutil apr)
+set_target_properties(${LOG4CXX_LIBRARY_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
+install(TARGETS ${LOG4CXX_LIBRARY_NAME}
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
         )
 		
 IF(MSVC)
-#  install (FILES "${CMAKE_CURRENT_BINARY_DIR}/Debug/${PROJECT_NAME}${PROJECT_DEBUG_POSTFIX}.pdb" DESTINATION ${CMAKE_INSTALL_LIBDIR} CONFIGURATIONS Debug)
+  install (FILES "${CMAKE_CURRENT_BINARY_DIR}/Debug/${LOG4CXX_LIBRARY_NAME}${PROJECT_DEBUG_POSTFIX}.pdb" DESTINATION ${CMAKE_INSTALL_LIBDIR} CONFIGURATIONS Debug)
 ENDIF()
+
+PKG_CONFIG_APPEND_LIBS(log4cxx)
+SETUP_PROJECT_FINALIZE()
