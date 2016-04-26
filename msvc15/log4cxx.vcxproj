@@ -1,0 +1,503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{24D2D608-22E9-42EF-960B-15A900E6AD16}</ProjectGuid>
+    <RootNamespace>log4cxx</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)build\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetExt>.dll</TargetExt>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)build\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetExt>.dll</TargetExt>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)build\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetExt>.dll</TargetExt>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)build\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetExt>.dll</TargetExt>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\log4cxx\src\main\include;$(SolutionDir)..\apr\include;$(SolutionDir)..\apr-util\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_USRDLL;DLL_EXPORTS;LOG4CXX;APR_DECLARE_STATIC;APU_DECLARE_STATIC;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <ProgramDataBaseFileName>$(OutDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>apr.lib;aprutil.lib;xml.lib;ws2_32.lib;Rpcrt4.lib;Mswsock.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\log4cxx\src\main\include;$(SolutionDir)..\apr\include;$(SolutionDir)..\apr-util\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_USRDLL;DLL_EXPORTS;LOG4CXX;APR_DECLARE_STATIC;APU_DECLARE_STATIC;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <ProgramDataBaseFileName>$(OutDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>apr.lib;aprutil.lib;xml.lib;ws2_32.lib;Rpcrt4.lib;Mswsock.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\log4cxx\src\main\include;$(SolutionDir)..\apr\include;$(SolutionDir)..\apr-util\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_USRDLL;DLL_EXPORTS;LOG4CXX;APR_DECLARE_STATIC;APU_DECLARE_STATIC;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>apr.lib;aprutil.lib;xml.lib;ws2_32.lib;Rpcrt4.lib;Mswsock.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\log4cxx\src\main\include;$(SolutionDir)..\apr\include;$(SolutionDir)..\apr-util\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_USRDLL;DLL_EXPORTS;LOG4CXX;APR_DECLARE_STATIC;APU_DECLARE_STATIC;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>apr.lib;aprutil.lib;xml.lib;ws2_32.lib;Rpcrt4.lib;Mswsock.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\appender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\appenderskeleton.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\asyncappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\basicconfigurator.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\config\propertysetter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\consoleappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\dailyrollingfileappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\db\odbcappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\defaultconfigurator.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\defaultloggerfactory.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\file.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\fileappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\filter\andfilter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\filter\denyallfilter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\filter\expressionfilter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\filter\levelmatchfilter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\filter\levelrangefilter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\filter\locationinfofilter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\filter\mapfilter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\filter\propertyfilter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\filter\stringmatchfilter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\absolutetimedateformat.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\appenderattachableimpl.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\aprinitializer.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\bufferedoutputstream.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\bufferedwriter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\bytearrayinputstream.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\bytearrayoutputstream.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\bytebuffer.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\cacheddateformat.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\charsetdecoder.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\charsetencoder.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\class.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\classregistration.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\condition.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\cyclicbuffer.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\datagrampacket.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\datagramsocket.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\date.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\dateformat.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\datelayout.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\datetimedateformat.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\exception.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\fileinputstream.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\fileoutputstream.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\filewatchdog.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\inetaddress.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\inputstream.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\inputstreamreader.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\integer.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\iso8601dateformat.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\loader.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\locale.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\loglog.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\messagebuffer.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\mutex.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\object.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\objectimpl.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\objectoutputstream.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\objectptr.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\onlyonceerrorhandler.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\optionconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\outputstream.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\outputstreamwriter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\pool.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\properties.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\propertyresourcebundle.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\reader.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\relativetimedateformat.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\resourcebundle.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\serversocket.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\simpledateformat.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\socket.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\socketoutputstream.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\strftimedateformat.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\strictmath.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\stringhelper.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\stringtokenizer.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\synchronized.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\syslogwriter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\system.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\systemerrwriter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\systemoutwriter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\tchar.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\thread.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\threadlocal.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\threadspecificdata.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\timezone.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\transcoder.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\transform.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\writer.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\helpers\xml.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\hierarchy.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\htmllayout.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\layout.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\level.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\log4cxx.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\logger.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\logmanager.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\logstring.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\mdc.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\ndc.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\net\smtpappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\net\socketappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\net\socketappenderskeleton.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\net\sockethubappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\net\syslogappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\net\telnetappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\net\xmlsocketappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\nt\nteventlogappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\nt\outputdebugstringappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\patternlayout.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\classnamepatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\datepatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\filedatepatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\filelocationpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\formattinginfo.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\fulllocationpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\integerpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\levelpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\linelocationpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\lineseparatorpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\literalpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\loggerpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\loggingeventpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\messagepatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\methodlocationpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\nameabbreviator.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\namepatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\ndcpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\patternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\patternparser.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\propertiespatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\relativetimepatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\threadpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\pattern\throwableinformationpatternconverter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\portability.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\private\log4cxx_private.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\propertyconfigurator.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\provisionnode.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rollingfileappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\action.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\filerenameaction.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\filterbasedtriggeringpolicy.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\fixedwindowrollingpolicy.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\gzcompressaction.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\manualtriggeringpolicy.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\rollingfileappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\rollingfileappenderskeleton.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\rollingpolicy.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\rollingpolicybase.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\rolloverdescription.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\sizebasedtriggeringpolicy.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\timebasedrollingpolicy.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\triggeringpolicy.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\rolling\zipcompressaction.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\simplelayout.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\appenderattachable.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\configurator.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\defaultrepositoryselector.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\errorhandler.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\filter.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\hierarchyeventlistener.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\location\locationinfo.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\loggerfactory.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\loggerrepository.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\loggingevent.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\optionhandler.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\repositoryselector.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\rootlogger.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\spi\triggeringeventevaluator.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\stream.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\ttcclayout.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\varia\fallbackerrorhandler.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\writerappender.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\xml\domconfigurator.h" />
+    <ClInclude Include="..\log4cxx\src\main\include\log4cxx\xml\xmllayout.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\log4cxx\src\main\cpp\action.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\appenderattachableimpl.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\appenderskeleton.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\aprinitializer.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\asyncappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\basicconfigurator.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\bufferedwriter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\bytearrayinputstream.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\bytearrayoutputstream.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\bytebuffer.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\cacheddateformat.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\charsetdecoder.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\charsetencoder.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\class.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\classnamepatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\classregistration.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\condition.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\configurator.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\consoleappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\cyclicbuffer.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\dailyrollingfileappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\datagrampacket.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\datagramsocket.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\date.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\dateformat.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\datelayout.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\datepatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\defaultconfigurator.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\defaultloggerfactory.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\defaultrepositoryselector.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\domconfigurator.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\exception.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\fallbackerrorhandler.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\file.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\fileappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\filedatepatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\fileinputstream.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\filelocationpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\fileoutputstream.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\filerenameaction.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\filewatchdog.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\filter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\filterbasedtriggeringpolicy.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\fixedwindowrollingpolicy.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\formattinginfo.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\fulllocationpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\gzcompressaction.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\hierarchy.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\htmllayout.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\inetaddress.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\inputstream.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\inputstreamreader.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\integer.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\integerpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\layout.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\level.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\levelmatchfilter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\levelpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\levelrangefilter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\linelocationpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\lineseparatorpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\literalpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\loader.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\locale.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\locationinfo.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\logger.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\loggerpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\loggingevent.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\loggingeventpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\loglog.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\logmanager.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\logstream.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\manualtriggeringpolicy.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\mdc.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\messagebuffer.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\messagepatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\methodlocationpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\mutex.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\nameabbreviator.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\namepatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\ndc.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\ndcpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\nteventlogappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\objectimpl.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\objectoutputstream.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\objectptr.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\obsoleterollingfileappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\odbcappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\onlyonceerrorhandler.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\optionconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\outputdebugstringappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\outputstream.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\outputstreamwriter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\patternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\patternlayout.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\patternparser.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\pool.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\properties.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\propertiespatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\propertyconfigurator.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\propertyresourcebundle.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\propertysetter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\reader.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\relativetimedateformat.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\relativetimepatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\resourcebundle.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\rollingfileappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\rollingpolicy.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\rollingpolicybase.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\rolloverdescription.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\rootlogger.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\serversocket.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\simpledateformat.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\simplelayout.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\sizebasedtriggeringpolicy.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\smtpappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\socket.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\socketappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\socketappenderskeleton.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\sockethubappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\socketoutputstream.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\strftimedateformat.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\stringhelper.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\stringmatchfilter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\stringtokenizer.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\synchronized.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\syslogappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\syslogwriter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\system.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\systemerrwriter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\systemoutwriter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\telnetappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\threadcxx.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\threadlocal.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\threadpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\threadspecificdata.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\throwableinformationpatternconverter.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\timebasedrollingpolicy.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\timezone.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\transcoder.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\transform.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\triggeringpolicy.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\ttcclayout.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\writer.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\writerappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\xmllayout.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\xmlsocketappender.cpp" />
+    <ClCompile Include="..\log4cxx\src\main\cpp\zipcompressaction.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
