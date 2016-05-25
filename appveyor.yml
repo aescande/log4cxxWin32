@@ -1,0 +1,67 @@
+version: 1.0.{build}
+os: Visual Studio 2015
+clone_folder: C:/devel-src/log4cxxWin32
+init:
+- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+install:
+- ps: >-
+    Set-PSDebug -Trace 2
+
+    $apr_url = "http://ftp.meisei-u.ac.jp/mirror/apache/dist//apr/apr-1.5.2-win32-src.zip"
+    
+    $aprutil_url = "http://ftp.meisei-u.ac.jp/mirror/apache/dist//apr/apr-util-1.5.4-win32-src.zip"
+    
+    $log4cxx_url = "http://ftp.meisei-u.ac.jp/mirror/apache/dist/logging/log4cxx/0.10.0/apache-log4cxx-0.10.0.zip"
+
+    (New-Object System.Net.WebClient).DownloadFile($apr_url, "apr.zip")
+    
+    (New-Object System.Net.WebClient).DownloadFile($aprutil_url, "aprutil.zip")
+    
+    (New-Object System.Net.WebClient).DownloadFile($log4cxx_url, "log4cxx.zip")
+    
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+
+    [System.IO.Compression.ZipFile]::ExtractToDirectory("apr.zip","apr")
+    
+    [System.IO.Compression.ZipFile]::ExtractToDirectory("aprutil.zip","apr-util")
+    
+    [System.IO.Compression.ZipFile]::ExtractToDirectory("log4cxx.zip","log4cxx")
+    
+    Move-Item -path C:/Windows/system32/apr/apr-1.5.2 -destination C:/devel-src/log4cxxWin32/apr
+    
+    Move-Item -path C:/Windows/system32/apr-util/apr-util-1.5.4 -destination C:/devel-src/log4cxxWin32/apr-util
+    
+    Move-Item -path C:/Windows/system32/log4cxx/apache-log4cxx-0.10.0 -destination C:/devel-src/log4cxxWin32/log4cxx
+    
+environment:
+  CI_OS_NAME: win32
+  CI_TOOL: appveyor
+  CHOCO_DEPENDENCIES: "doxygen.portable"
+# Should be the same as clone_folder
+  PROJECT_SOURCE_DIR: C:/devel-src/log4cxxWin32
+# Do not tinker with the variables below unless you know what you are doing
+  SOURCE_FOLDER: C:\devel-src
+  CMAKE_INSTALL_PREFIX: C:/devel
+  PATH: C:/devel/bin;C:\Libraries\boost_1_59_0\lib64-msvc-14.0;%PATH%
+  PKG_CONFIG_PATH: C:/devel/lib/pkgconfig
+  BOOST_ROOT: C:\Libraries\boost_1_59_0
+  BOOST_LIBRARYDIR: C:\Libraries\boost_1_59_0\lib64-msvc-14.0
+  
+before_build:
+  cmd: >-
+    cd %PROJECT_SOURCE_DIR%/scripts
+    
+    configure.bat
+    
+    cd %PROJECT_SOURCE_DIR%/cmake
+  
+    git submodule update --init
+
+    cmake -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX=%CMAKE_INSTALL_PREFIX%
+
+build:
+  project: C:/devel-src/log4cxxWin32/cmake/liblog4cxx.sln
+
+on_finish:
+- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
